@@ -1,11 +1,16 @@
 import time
+import tracemalloc
 
-def counter(func):
+def tracking(func):
     def wrapper(*args, **kwargs):
         start = time.perf_counter()
+        tracemalloc.start()
         result = func(*args, **kwargs)
+        current , peak  = tracemalloc.get_traced_memory()
         end = time.perf_counter()
-        time = end - start
-        return time , result 
+        time_taken = end - start
+        tracemalloc.stop()
+        return float(f"{time_taken:.2f}") , float(f"{peak/(1024 * 1024):.2f}") , result 
     return wrapper
 
+#@tracking add this before the function it will return the time memory and then the result so be sure to accquire em
