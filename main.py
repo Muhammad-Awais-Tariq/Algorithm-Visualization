@@ -10,7 +10,7 @@ def tracking(func):
         end = time.perf_counter()
         time_taken = end - start
         tracemalloc.stop()
-        return float(f"{time_taken:.2f}") , float(f"{peak/(1024 * 1024):.2f}") , result 
+        return float(f"{time_taken:.6f}") , float(f"{peak/(1024):.2f}") , result 
     return wrapper
 
-#@tracking add this before the function it will return the time memory and then the result so be sure to accquire em
+#@tracking add this before the function it will return the time memory and then the result so be sure to accquire em time is in seconds and the memory in kbs
