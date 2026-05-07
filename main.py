@@ -10,7 +10,7 @@ def tracking(func):
         end = time.perf_counter()
         time_taken = end - start
         tracemalloc.stop()
-        return float(f"{time_taken:.6f}") , float(f"{peak/(1024):.2f}") , result 
+        return f"{time_taken:.6f}" , f"{peak/(1024):.2f}" , result 
     return wrapper
 
 class node:
