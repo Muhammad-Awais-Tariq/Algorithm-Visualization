@@ -139,6 +139,7 @@ def astar(intialstate , goalstate ,maze):
 
     frontier = [(0,intialstate)]
     explored = set()
+    explored_list = []
 
     graph[intialstate].costfromstart = 0
     while frontier:
@@ -146,10 +147,11 @@ def astar(intialstate , goalstate ,maze):
         heuristiccost , currentnode = frontier.pop(0)
 
         if currentnode == goalstate:
-            return actionsequence(graph , goalstate , explored)
+            return actionsequence(graph , goalstate , explored_list)
         
         explored.add(currentnode)
-
+        explored_list.append(currentnode)
+        
         for child,cost in graph[currentnode].action:
             newcost = graph[currentnode].costfromstart + cost
             newheuristic = newcost + calculateheuristic(child,goalstate)
