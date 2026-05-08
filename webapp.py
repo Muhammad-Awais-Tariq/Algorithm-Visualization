@@ -95,3 +95,21 @@ if st.button("▶ Run BFS"):
         st.info(f"The total time taken is : {timetake} seconds")
         st.info(f"The total memory taken is : {memory} kb")
 
+if st.button("▶ Run DFS"):
+    if "maze" not in st.session_state:
+        st.warning("Please select a maze first!")
+    else:
+        maze = st.session_state.maze
+        initialstate = st.session_state.initialstate
+        goalstate = st.session_state.goalstate
+
+        timetake, memory, result = dfs(initialstate, goalstate, maze)
+        explored = []
+        for cell in result[1]:
+            explored.append(cell)
+            placeholder.text(draw_maze(maze, highlight_cells=explored, start=initialstate, end=goalstate))
+            time.sleep(0.15)
+        placeholder.text(draw_maze(maze, solution_cells=result[0], start=initialstate, end=goalstate))
+        st.success(f"✅ Path found! {len(result[0])} steps")
+        st.info(f"The total time taken is : {timetake} seconds")
+        st.info(f"The total memory taken is : {memory} kb")
