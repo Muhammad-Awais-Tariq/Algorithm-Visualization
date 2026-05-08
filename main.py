@@ -163,6 +163,28 @@ def astar(intialstate , goalstate ,maze):
                 frontier.append((newheuristic,child))
     
     return None
+
+def draw_maze(maze, highlight_cells=[], solution_cells=[], start=None, end=None):
+    rows, cols = len(maze), len(maze[0])
+    colors = []
+    for r in range(rows):
+        row_colors = []
+        for c in range(cols):
+            if (r, c) == start:
+                row_colors.append("🟢")
+            elif (r, c) == end:
+                row_colors.append("🔴")
+            elif (r, c) in solution_cells:
+                row_colors.append("🟡")
+            elif (r, c) in highlight_cells:
+                row_colors.append("🔵")
+            elif maze[r][c] == 1:
+                row_colors.append("⬛")
+            else:
+                row_colors.append("⬜")
+        colors.append(" ".join(row_colors))
+    return "\n".join(colors)
+
 if __name__ == "__main__":
     initialstate = (1,1) 
     goalstate = (11,11)    
