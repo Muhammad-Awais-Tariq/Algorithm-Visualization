@@ -1,11 +1,12 @@
-# Maze Solver
+# Algorithm Visualizer
 
-A visual **Maze Solver** web app built with **Streamlit** that animates BFS, DFS, and A★ algorithms solving three different mazes in real time, with live performance comparisons.
+A visual **Algorithm Visualization** web app built with **Streamlit** that demonstrates how search algorithms explore and solve problems in real time through animated grid-based environments.
+
 
 ## Features
 
-- Interactive maze selection from three pre-built mazes
-- Visual step-by-step animation of the search exploration and final solution path
+- Interactive visualization of search algorithms on multiple environments
+- Real-time exploration visualization showing how algorithms traverse the state space
 - Three algorithm implementations — BFS, DFS, and A★
 - Per-run metrics — steps taken, time elapsed, and memory used
 - Side-by-side algorithm comparison table after running multiple solvers
